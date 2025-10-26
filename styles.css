@@ -1,0 +1,387 @@
+/* GRUNNINNSTILLINGER & UNIVERSAL UTFORMING */
+:root {
+    --hovedfarge: #362f2d; 
+    --sekundaerfarge: #bdae9c; 
+    --bakgrunn: #ffffff;
+    --aksent: #a35a4f; 
+    /* NYE FONTER DEFINERT HER */
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Montserrat", sans-serif;
+}
+
+/* Tilbakestill standard nettleserstil */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body); /* Bruker Inter for all generell tekst */
+    line-height: 1.6;
+    color: var(--hovedfarge);
+    background-color: var(--bakgrunn);
+    padding-top: 60px;
+}
+
+/* TYPOGRAFI */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading); /* Bruker Montserrat for overskrifter/logo */
+    color: var(--hovedfarge); 
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+/* HEADER & NAVIGASJON (Intuitiv navigasjon) */
+header {
+    background-color: var(--bakgrunn);
+    border-bottom: 1px solid #eee;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Holder nav-baren synlig */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--hovedfarge);
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+nav ul li a:hover {
+    background-color: var(--sekundaerfarge);
+    /* FIKS: Vi må sørge for at teksten er MØRK når bakgrunnen er lys sekundaerfarge */
+    color: var(--hovedfarge); /* Sikrer mørk tekst ved hover */
+}
+
+/* HEADER & NAVIGASJON - Justering for lenker */
+
+/* Målretter alle lenker inne i headeren (både logo og navigasjon) */
+header a {
+    text-decoration: none; /* Fjerner standard understreking for ALLE lenker i header */
+    color: var(--hovedfarge); /* Sikrer at lenkefargen er vår mørke hovedfarge */
+    transition: color 0.2s; /* Beholder den subtile fargeendringen ved hover */
+}
+
+/* Spesifikk stil for logo-lenken, hvis den trenger ekstra margin */
+header a h1 {
+    color: var(--hovedfarge); /* Sikrer at fargen på H1 inni lenken ikke overstyres */
+}
+
+/* Hover-effekt på alle lenker i header */
+header a:hover {
+    text-decoration: none;
+    /* OPPRINNELIG FEIIL HER: color: var(--sekundaerfarge); ble overstyrt, men vi fjerner den herfra: */
+    color: var(--hovedfarge); /* Lar logoen beholde hover-fargen, men navigasjonslenkene får sin spesifikke stil over. */
+}
+
+/* KNAPPER (CTA - call to action) */
+button, .cta-button {
+    background-color: var(--aksent);
+    color: white !important; /* Sikrer hvit tekstfarge */
+    padding: 10px 20px;
+    
+    /* Grunnstil: Mørk brun stiplet ramme (sy-sting) */
+    border: 2px dashed var(--hovedfarge); 
+    border-radius: 4px; 
+    
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none; /* For .cta-button */
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s, border-color 0.2s; 
+}
+
+/* Hover-stil: Setter mørkere bakgrunn og HVITE stiplede "sting" */
+button:hover, .cta-button:hover {
+    background-color: #7d443b; /* Litt mørkere hover-farge på knappen */
+    border-color: white; /* FIKS: Gjør stingene hvite ved hover */
+}
+
+/* HOVEDINNHOLD */
+main {
+    padding: 20px 5%;
+    max-width: 1500px; /* Holder innholdet sentrert på store skjermer */
+    margin: 0 auto;
+}
+/* Stil for lenker inne i produktkortet for å unngå blå standardfarge */
+.produktkort a {
+    text-decoration: none; /* Fjerner understreken */
+    color: var(--hovedfarge); /* Setter fargen til den primære tekstfargen */
+    display: block; /* Sikrer at hele kortet er klikkbart (hvis du velger den stilen) */
+}
+
+.produktkort a:hover h3 {
+    color: var(--aksent); /* Gir en subtil hover-effekt på overskriften */
+}
+
+/* HERO-SEKSJON (OPPDATERT FOR VIDEO OG SENTRERING) */
+.hero {
+    position: relative; 
+    z-index: 1; 
+    min-height: 500px; /* Sikrer vertikal plass */
+    background-color: transparent; 
+    overflow: hidden; 
+    /* Flexbox for å sentrere innholdet vertikalt og horisontalt */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 0; 
+    margin-bottom: 40px;
+}
+
+/* Stil for video-elementet */
+.hero-video {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; 
+    object-fit: cover; 
+}
+
+/* Stil for innholdet som skal ligge over videoen (vertikalt sentrert via .hero) */
+.hero-content {
+    z-index: 10;
+    padding: 60px 20px;
+    color: white; /* Hovedtekstfarge satt til hvit */
+}
+
+/* Tvinger overskrifter i hero-content til hvit og gir skygge for kontrast */
+.hero-content h2 {
+    color: white; 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
+}
+
+/* Tekst og knappen får også en liten skygge */
+.hero-content p, .hero-content .cta-button {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
+}
+
+/* Fjerner den gamle .hero p stilen og bruker .hero-content p istedenfor */
+.hero-content p {
+    margin-bottom: 30px;
+}
+/* SLUTT PÅ NY VIDEO STIL */
+
+/* PRODUKTGALLERIET (Responsivt grid) */
+.produktgalleriet {
+    display: grid;
+    gap: 30px;
+    /* Sikrer minimum 400px bredde, eller fyller ledig plass (1fr) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    justify-content: center; 
+}
+
+/* 🚀 START: STIL FOR SVEVENDE PRODUKTKORT (KORRIGERT) */
+.produktkort {
+    /* Grunnstil: Mørk stiplet ramme (sy-sting) */
+    border: 2px dashed var(--hovedfarge); 
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px; /* Litt større radius for et finere løft */
+    background-color: var(--bakgrunn); /* Sikrer hvit bakgrunn for skyggeeffekt */
+    
+    /* VELDIG VIKTIG: Definerer overgangen for myk animasjon */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out; 
+    
+    /* Start-skygge: Løfter kortet subtilt fra start */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.produktkort:hover {
+    /* 1. Løfter kortet 10 piksler opp langs Y-aksen */
+    transform: translateY(-10px); 
+    
+    /* 2. Lager en dypere og større skygge for å simulere et større løft */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); 
+    
+    /* 3. Valgfritt: Endrer den stiplede kanten til aksentfarge ved hover */
+    border-color: var(--aksent); 
+    
+    /* Sørger for at kortet vises over andre elementer under hover */
+    z-index: 10; 
+}
+/* 🛑 SLUTT: STIL FOR SVEVENDE PRODUKTKORT (KORRIGERT) */
+
+/* PRODUKTGALLERIET - Sikrer at bildene har lik høyde og god beskjæring */
+.produktkort img {
+    /* Fast høyde for bildene */
+    height: 350px; /* Redusert fra 500px for å unngå for lange kort på mobil */
+    
+    /* Tvinger bildet til å dekke hele det definerte arealet */
+    object-fit: cover; 
+    
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.pris {
+    font-size: 1.1rem;
+    color: var(--aksent);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* FJERNET: .produktkort button { width: 100%; } */
+
+/* STIL FOR FARGEVELGER */
+.fargevelger {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.farge-sirkel {
+    width: 35px; /* Størrelsen på sirkelen */
+    height: 35px;
+    border-radius: 50%; /* Gjør knappen til en sirkel */
+    border: 2px solid #ccc; /* Standard tynn kant for å definere sirkelen */
+    cursor: pointer;
+    padding: 0;
+    
+    /* Overgang for jevn markering */
+    transition: border-color 0.2s, box-shadow 0.2s; 
+}
+
+/* Stil for den valgte fargen (markeringen) */
+.farge-sirkel.valgt {
+    border-color: var(--aksent); /* Tykk, tydelig farge på valgt sirkel */
+    border-width: 4px; /* Tydelig tykkere kant */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 0 0 6px var(--aksent); /* Ekstra markering rundt */
+}
+
+/* Tilgjengelighetsmarkering (fokus) */
+.farge-sirkel:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--sekundaerfarge);
+}
+
+/* STIL FOR PRODUKTDETALJ-SIDE */
+
+/* Sikrer at hvert valg (farge/antall) og knappen starter på en ny linje på større skjermer */
+.produkt-info .valg-gruppe {
+    display: block; 
+    width: 100%; 
+}
+
+/* Spesifikk justering for at Antall-input skal starte på ny linje ETTER fargevelgeren */
+.produkt-info .valg-gruppe:nth-of-type(2) {
+    margin-top: 15px; /* Litt ekstra avstand fra fargevelgeren over */
+}
+
+/* Sørger for at henvendelsesknappen starter på en ny linje og tar full bredde */
+.produkt-info .send-henvendelse-knapp {
+    display: block;
+    width: 100%;
+    margin-top: 20px; /* Luft til elementet over */
+    margin-bottom: 30px; /* NYTT: Mer luft til tittelen under */
+}
+
+/* Mer luft rundt detaljer og spesifikasjoner */
+.produkt-info h3 {
+    /* Øker avstanden over og under detaljoverskriftene */
+    margin-top: 30px; 
+    margin-bottom: 10px;
+    text-align: left; /* Sikrer at detaljoverskriftene er venstrejustert */
+}
+
+.produkt-info p, 
+.produkt-info ul {
+    /* Sikrer generell avstand under tekstblokker og lister */
+    margin-bottom: 20px;
+}
+
+.produkt-info ul {
+    /* Legger til luft over listen og litt polstring til venstre for å forbedre listestilen */
+    padding-left: 20px; 
+    margin-top: 10px;
+}
+
+.produkt-info ul li {
+    /* Justerer linjehøyden for bedre lesbarhet i listepunktene */
+    line-height: 2.0;
+}
+/* Markering av det aktive (valgte) miniatyrbildet - NYTT! */
+.mini-bilder img.aktiv {
+    border: 2px solid var(--aksent) !important; /* Tykkere ramme og aksentfarge */
+    opacity: 0.8; /* Kan dimme litt for å skille fra hover-effekt */
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--hovedfarge);
+    color: white;
+    text-align: center;
+    padding: 20px 5%;
+    margin-top: 40px;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+}
+
+/* FJERNET: Overflødig/Feilplassert stil for sentrering av H2. Overskrifter er allerede sentrert globalt (eller justeres med margin). */
+/* main .produktgalleriet h2 { ... } */
+
+/* MEDIA QUERIES (Justering for mindre skjermer) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 5%;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Lar lenkene "brekke" ned på små skjermer */
+        justify-content: center;
+    }
+
+    nav ul li a {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    body {
+        padding-top: 100px; /* Juster for en høyere header på mobil */
+    }
+
+    /* Justering av produktgalleriet på mobil */
+    .produktgalleriet {
+        /* Endret minmax fra 400px til 300px for å tillate mindre kort på mobil */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    }
+}

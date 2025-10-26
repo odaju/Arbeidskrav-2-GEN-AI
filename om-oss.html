@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Oss – Skinnverket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* CSS for å få videoen til å fungere som bakgrunn */
+        .om-oss-hero {
+            position: relative; 
+            height: 60vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f8f8f8; /* ENDRET: KREM-HVIT farge for hele seksjonen */
+            text-align: center;
+            overflow: hidden; 
+            margin-bottom: 40px; 
+        }
+        
+        /* Styler videoen som bakgrunn */
+        .om-oss-hero .bakgrunnsvideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0; 
+            transform: translate(-50%, -50%);
+            object-fit: cover; 
+        }
+        
+        /* Layer for å gjøre teksten lesbar over videoen (mørk overlay) */
+        .om-oss-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* ENDRET: Litt mørkere overlay (fra 0.5 til 0.6) for bedre kontrast */
+            z-index: 1; 
+        }
+
+        /* Sikrer at innholdet vises over videoen/overlay */
+        .om-oss-hero-innhold {
+            position: relative;
+            z-index: 2; 
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .om-oss-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #f8f8f8; /* Sikrer at h2 bruker krem-hvitt */
+        }
+
+        .om-oss-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #f8f8f8; /* Sikrer at p bruker krem-hvitt */
+        }
+
+        /* Stiljustering for teksttung side (seksjonen under videoen) */
+        .om-oss-seksjon {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .om-oss-seksjon p {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .om-oss-seksjon h3 {
+             text-align: left;
+             margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" aria-label="Gå til forsiden - Skinnverket">
+             <h1>Skinnverket</h1>
+        </a>
+        <nav aria-label="Hovednavigasjon">
+            <ul role="list">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="produkter.html">Produkter</a></li>
+                <li><a href="om-oss.html">Om Oss</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="om-oss-hero" aria-labelledby="om-oss-tittel">
+            
+            <video class="bakgrunnsvideo" autoplay loop muted playsinline poster="placeholder-verksted.jpg">
+                <source src="desk-film.mp4" type="video/mp4">
+                Din nettleser støtter ikke HTML5 video.
+            </video>
+
+            <div class="om-oss-hero-innhold">
+                <h2 id="om-oss-tittel">Vår Historie: Lidenskap for Lær</h2>
+                <p>Ekte håndverk fortjener å vare. Lær om prinsippene som driver vårt verksted.</p>
+            </div>
+        </section>
+
+        <section class="om-oss-seksjon">
+            
+            <h3>Vår Filosofi</h3>
+            <p>
+                <b>Skinnverket</b> ble grunnlagt i 2020 av Lars Jensen med en enkel filosofi: Ekte håndverk fortjener å vare. I en verden dominert av masseproduksjon, valgte vi å gå tilbake til det grunnleggende – å lage tidløse produkter, ett om gangen, ved hjelp av tradisjonelle teknikker.
+            </p>
+            
+            <h3>Bærekraft og Kvalitet</h3>
+            <p>
+                Vi bruker kun <b>vegetabilsk garvet skinn</b> fra nøye utvalgte europeiske garverier. Dette sikrer ikke bare enestående kvalitet og et vakkert patina over tid, men er også et miljøbevisst valg. Hver søm og hver kant er et bevis på vår forpliktelse til kvalitet og bærekraft.
+            </p>
+            
+            <h3>Design for Evigheten</h3>
+            <p>
+                Vår designfilosofi er <b>minimalistisk</b> og funksjonell. Vi tror på at det beste designet er det som forsvinner, og lar materialet og håndverket skinne. Takk for at du støtter ekte, lokalt håndverk.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Skinnverket. Alle rettigheter reservert.</p>
+        <ul role="list">
+            <li><a href="#personvern">Personvern</a></li>
+            <li><a href="#vilkar">Vilkår for bruk</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

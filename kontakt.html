@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt Oss – Skinnverket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Kun for denne siden: Stil for kontaktskjema */
+        .kontakt-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .kontakt-container form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .kontakt-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .kontakt-container input[type="text"], 
+        .kontakt-container input[type="email"], 
+        .kontakt-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0; /* Minimalistisk utseende */
+            font-family: var(--font-body); /* Rettet font-familien til var(--font-body) */
+        }
+
+        .kontakt-container textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        /* Ekstra plass til knappen */
+        .kontakt-container button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" aria-label="Gå til forsiden - Skinnverket">
+             <h1>Skinnverket</h1>
+        </a>
+        <nav aria-label="Hovednavigasjon">
+            <ul role="list">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="produkter.html">Produkter</a></li>
+                <li><a href="om-oss.html">Om Oss</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="kontakt-container" aria-labelledby="kontakt-tittel">
+            <h2 id="kontakt-tittel" style="text-align: center;">Ta Kontakt</h2>
+            <p style="text-align: center; margin-bottom: 30px;">
+                Har du spørsmål om våre produkter, spesialbestillinger eller ønsker å samarbeide? Send oss en melding!
+            </p>
+
+            <form action="/send-melding" method="POST">
+                
+                <div>
+                    <label for="navn">Navn (obligatorisk)</label>
+                    <input type="text" id="navn" name="navn" required aria-required="true">
+                </div>
+
+                <div>
+                    <label for="epost">E-post (obligatorisk)</label>
+                    <input type="email" id="epost" name="epost" required aria-required="true">
+                </div>
+                
+                <div>
+                    <label for="produktnavn">Gjelder produkt</label>
+                    <input type="text" id="produktnavn" name="produktnavn" value="Generell henvendelse" readonly>
+                </div>
+
+                <div>
+                    <label for="emne">Emne</label>
+                    <input type="text" id="emne" name="emne">
+                </div>
+                
+                <div>
+                    <label for="melding">Melding (obligatorisk)</label>
+                    <textarea id="melding" name="melding" required aria-required="true"></textarea>
+                </div>
+                
+                <button type="submit" class="cta-button">Send Melding</button>
+            </form>
+
+            <p style="text-align: center; margin-top: 30px;">
+                Du kan også kontakte oss direkte på: <a href="mailto:kontakt@skinnverket.no">kontakt@skinnverket.no</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Skinnverket. Alle rettigheter reservert.</p>
+        <ul role="list">
+            <li><a href="#personvern">Personvern</a></li>
+            <li><a href="#vilkar">Vilkår for bruk</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const produkt = urlParams.get('produkt');
+            const farge = urlParams.get('farge');
+            const meldingstekst = document.getElementById('melding');
+            const emneInput = document.getElementById('emne');
+            
+            let standardMelding = "Hei, jeg har et spørsmål angående et produkt.";
+
+            if (produkt) {
+                standardMelding = `Hei, jeg er interessert i produktet: ${decodeURIComponent(produkt)}`;
+                
+                if (farge) {
+                    standardMelding += ` i fargen ${decodeURIComponent(farge)}.`;
+                } else {
+                    standardMelding += `.`;
+                }
+                
+                // Setter Emne hvis det er tomt
+                if (emneInput && emneInput.value === '') {
+                     emneInput.value = `Henvendelse: ${decodeURIComponent(produkt)}`;
+                }
+                
+                // Oppdaterer også det readonly produktnavn-feltet
+                const produktnavnInput = document.getElementById('produktnavn');
+                if (produktnavnInput) {
+                    produktnavnInput.value = decodeURIComponent(produkt);
+                }
+            }
+            
+            // Setter den forhåndsutfylte meldingen
+            if (meldingstekst) {
+                 meldingstekst.value = standardMelding;
+            }
+        });
+    </script>
+</body>
+</html>

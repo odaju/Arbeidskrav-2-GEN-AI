@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skinnverket – Håndlagde Skinn-Artikler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" aria-label="Gå til forsiden - Skinnverket">
+             <h1>Skinnverket</h1>
+        </a>
+        <nav aria-label="Hovednavigasjon">
+            <ul role="list">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="produkter.html">Produkter</a></li>
+                <li><a href="om-oss.html">Om Oss</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="produkter">
+        <section class="hero" aria-labelledby="hero-heading">
+            
+            <video class="hero-video" autoplay loop muted playsinline poster="placeholder-bilde.jpg">
+                <source src="skinnfilm.mp4" type="video/mp4">
+                Din nettleser støtter ikke HTML5 video.
+            </video>
+            <div class="hero-content">
+                <h2 id="hero-heading">Ekte Håndverk. Ekte Skinn.</h2>
+                <p>Utforsk vår kolleksjon av unike, håndlagde skinn-artikler.</p>
+                <a href="#produkter-tittel" class="cta-button">Se Produkter</a>
+            </div>
+        </section>
+            
+        <h2 id="produkter-tittel">Våre Produkter</h2>
+        
+        <section id="produkter-liste" class="produktgalleriet">
+        
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=001" aria-label="Se detaljer for Skinnveske 'Minimal'">
+                    <img src="placeholder-veske-1.png" alt="Bilde av en elegant håndlaget skinnveske">
+                    <h3>Skinnveske 'Minimal'</h3>
+                </a>
+                <p class="pris">1 999 kr</p>
+            </article>
+
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=002" aria-label="Se detaljer for Lommebok 'Tynn'">
+                    <img src="placeholder-kort-1.png" alt="Bilde av en tynn skinnlommebok">
+                    <h3>Lommebok 'Tynn'</h3>
+                </a>
+                <p class="pris">499 kr</p>
+            </article>
+
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=003" aria-label="Se detaljer for Nøkkelring 'Klassisk'">
+                    <img src="placeholder-ring-1.png" alt="Bilde av en minimalistisk nøkkelring i lær">
+                    <h3>Nøkkelring 'Klassisk'</h3>
+                </a>
+                <p class="pris">149 kr</p>
+            </article>
+
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=004" aria-label="Se detaljer for Skinnbelte 'Håndsydd'">
+                    <img src="placeholder-belte-1.png" alt="Bilde av et brunt skinnbelte med messing-spenne">
+                    <h3>Skinnbelte 'Håndsydd'</h3>
+                </a>
+                <p class="pris">799 kr</p>
+            </article>
+
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=005" aria-label="Se detaljer for Kortholder 'Liten'">
+                    <img src="placeholder-pung-1.png" alt="Bilde av en liten skinnpung">
+                    <h3>Kortholder 'Liten'</h3>
+                </a>
+                <p class="pris">299 kr</p>
+            </article>
+
+            <article class="produktkort" tabindex="0">
+                <a href="produkt-detalj.html?id=006" aria-label="Se detaljer for Dokumentmappe 'Executive'">
+                    <img src="placeholder-doku-1.png" alt="Bilde av en A4 dokumentmappe i skinn">
+                    <h3>Dokumentmappe 'Executive'</h3>
+                </a>
+                <p class="pris">2 499 kr</p>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Skinnverket. Alle rettigheter reservert.</p>
+        <ul role="list">
+            <li><a href="#personvern">Personvern</a></li>
+            <li><a href="#vilkar">Vilkår for bruk</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

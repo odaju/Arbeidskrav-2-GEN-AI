@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktdetalj – Skinnverket</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Kun for denne siden: Layout for produktdetaljer */
+        /* Merk: Layout for stabling av farge/antall/knapp håndteres nå i styles.css */
+        .produkt-container {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .bilde-galleri, .produkt-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hovedbilde {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .mini-bilder {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mini-bilder img {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 1px solid #eee;
+            transition: border 0.2s;
+        }
+
+        .mini-bilder img:hover, .mini-bilder img:focus {
+            border: 1px solid var(--aksent);
+        }
+        
+        /* NYTT: Markering av det aktive bildet (må også være i styles.css) */
+        .mini-bilder img.aktiv {
+            border: 2px solid var(--aksent) !important; 
+        }
+
+        .produkt-info h1 {
+            text-align: left;
+        }
+        
+        .pris-stor {
+            font-size: 2rem;
+            color: var(--aksent);
+            margin: 15px 0;
+            display: block;
+        }
+
+        .valg-gruppe {
+            margin-bottom: 20px;
+        }
+
+        /* Responsivitet for detaljsiden */
+        @media (max-width: 768px) {
+            .produkt-container {
+                flex-direction: column; /* Stabler bildene og infoen vertikalt */
+            }
+            .produkt-info h1 {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body class="produkt-detalj">
+
+    <header>
+        <a href="index.html" aria-label="Gå til forsiden - Skinnverket">
+             <h1>Skinnverket</h1>
+        </a>
+        <nav aria-label="Hovednavigasjon">
+            <ul role="list">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="produkter.html">Produkter</a></li>
+                <li><a href="om-oss.html">Om Oss</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="produkt-container">
+            
+            <section class="bilde-galleri" aria-label="Produktbilder">
+                <img id="hovedproduktbilde" 
+                     src="placeholder-veske-1.png" 
+                     alt="Hovedbilde av skinnveske i brunt skinn" 
+                     class="hovedbilde">
+                
+                <div class="mini-bilder">
+                    <img src="placeholder-veske-1.png" 
+                         alt="Skinnveske, forfra" 
+                         tabindex="0" 
+                         class="aktiv" 
+                         data-src="placeholder-veske-1.png">
+
+                    <img src="placeholder-veske-2.png" 
+                         alt="Skinnveske, sidevisning" 
+                         tabindex="0" 
+                         data-src="placeholder-veske-2.png">
+
+                    <img src="placeholder-veske-3.png" 
+                         alt="Skinnveske, detalj av innsiden" 
+                         tabindex="0" 
+                         data-src="placeholder-veske-3.png">
+                </div>
+            </section>
+
+            <section class="produkt-info">
+                <h1>Produktnavn Lastes...</h1> 
+                <span class="pris-stor">...</span>
+
+                <div class="valg-gruppe">
+                    <label>Farge:</label>
+                        <div class="fargevelger" role="radiogroup" aria-label="Velg lær-farge">
+                            
+                            <button type="button" class="farge-sirkel" data-farge="brun" aria-label="Klassisk Brun" 
+                            style="background-color: #634335;" aria-checked="true" role="radio"></button>
+                            
+                            <button type="button" class="farge-sirkel" data-farge="sort" aria-label="Midnattsort" 
+                            style="background-color: #2c2c2c;" role="radio"></button>
+                            
+                            <button type="button" class="farge-sirkel" data-farge="marinebla" aria-label="Marineblå" 
+                            style="background-color: #1a385b;" role="radio"></button>
+                            
+                            <button type="button" class="farge-sirkel" data-farge="skogsgroenn" aria-label="Skogsgrønn" 
+                            style="background-color: #2f4f39;" role="radio"></button>
+                        </div>
+                </div> 
+                <div class="valg-gruppe">
+                    <label for="antallvalg">Antall:</label>
+                    <input type="number" id="antallvalg" value="1" min="1" max="10" aria-label="Antall varer" style="width: 60px; padding: 5px;">
+                </div>
+                
+                <a href="kontakt.html?produkt=Skinnveske%20'Minimal'" id="henvendelse-knapp" class="cta-button send-henvendelse-knapp" style="width: 100%; margin-top: 20px;">Send en henvendelse</a>
+
+
+                <h3>Produktbeskrivelse</h3>
+                <p></p>
+
+                <h3>Spesifikasjoner</h3>
+                <ul></ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Skinnverket. Alle rettigheter reservert.</p>
+        <ul role="list">
+            <li><a href="#personvern">Personvern</a></li>
+            <li><a href="#vilkar">Vilkår for bruk</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
